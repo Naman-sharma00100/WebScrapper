@@ -60,7 +60,6 @@ def get_title_amazon(soup):
     return title_string
 
 
-# Function to extract Product Price
 def get_price_amazon(soup):
     try:
         price = soup.find("span",attrs={"class":"a-price aok-align-center reinventPricePriceToPayMargin priceToPay"}).find("span",attrs={"class":"a-offscreen"}).string.strip()
@@ -81,13 +80,11 @@ def scrape_flipkart(URL):
         headers=HEADERS
     )
     soup = BeautifulSoup(response.text,"html.parser")
-    # with open('result.html', 'w',encoding="utf-8") as f:
-    #     f.write(response.text)
     title = get_title_flipkart(soup)
     price = get_price_flipkart(soup)
     flipkart_data = "Title: "+title + "\n Price: "+price
 
-    return flipkart_data  # Replace this with the actual data you want to return from Flipkart.
+    return flipkart_data  
 
 
 def get_title_flipkart(soup):
@@ -106,7 +103,6 @@ def get_title_flipkart(soup):
     return title_string
 
 
-# Function to extract Product Price
 def get_price_flipkart(soup):
     try:
         price = soup.find("div",attrs={"class":"_25b18c"}).find("div",attrs={"class":"_30jeq3 _16Jk6d"}).string.strip()
